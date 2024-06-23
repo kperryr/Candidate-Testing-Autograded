@@ -16,7 +16,9 @@ let questions = ["Who was the first American woman in space? ",
                   "True or false: 5 kilometer == 5000 meters? ",
                   "(5 + 3)/2 * 10 = ? ",
                   "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
-                  "What is the minimum crew size for the ISS? "];
+                  "What is the minimum crew size for the ISS? "
+                ];
+
 let correctAnswers = ["Sally Ride" ,	"true" ,	"40" , "Trajectory" ,"3"];
 let candidateAnswers = [];
 
@@ -37,19 +39,26 @@ function askQuestion() {
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
-
+  let corrects = 0;
+  console.log("\nCandidate Name: "+ candidateName);
   for(i=0; i<questions.length; i++){
-    console.log(`${i+1}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}`);
     
-    /*console.log(`Your Answer: ${candidateAnswers[i]}`);
-    console.log(`Correct Answer: ${correctAnswers[i]}`);*/
+    console.log(`${i+1}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
+    
+    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
+      corrects += 1;
+    }
     
   }
 
-
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
-
+  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade = (corrects/5)*100; 
+  console.log(`>>> Overall Grade: ${grade}% (${corrects} of 5 responses correct) <<<`);
+  if (grade<80 ){
+    console.log(">>> Status: FAILED <<< ");
+  } else {
+    console.log(">>> Status: PASSED <<< ");
+  }
 
   return grade;
 }
@@ -60,6 +69,7 @@ function runProgram() {
    console.log("Candidate Name: " + candidateName);
   askQuestion();
   gradeQuiz(this.candidateAnswers);
+
 }
 
 // ----------- Don't write any code or change any code below this line ---------- //
