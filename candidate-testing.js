@@ -1,6 +1,6 @@
 const input = require('readline-sync');
 
-// TODO 2: modify your quiz app to ask 5 questions //small change to run autograding
+// TODO 2: modify your quiz app to ask 5 questions 
 
 // TODO 1.1a: Define candidateName // 
 let candidateName = "";
@@ -25,35 +25,32 @@ let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-    //const input = require('readline-sync');
-    candidateName = input.question("What is your name?");
+  candidateName = input.question("What is your name?");
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  for(i=0; i<questions.length; i++){
+  for (i=0; i<questions.length; i++){
     candidateAnswers[i] = input.question(questions[i]);
   }
 }
 
 function gradeQuiz(candidateAnswers) {
-
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   let corrects = 0;
   console.log("\nCandidate Name: "+ candidateName);
-  for(i=0; i<questions.length; i++){
-    
+  for (i=0; i<questions.length; i++){
     console.log(`${i+1}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
-    
+
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()){
       corrects += 1;
     }
-    
   }
-
+  
   //TODO 3.2 use this variable to calculate the candidates score.
   let grade = (corrects/5)*100; 
   console.log(`>>> Overall Grade: ${grade}% (${corrects} of 5 responses correct) <<<`);
+  
   if (grade<80 ){
     console.log(">>> Status: FAILED <<< ");
   } else {
