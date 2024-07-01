@@ -18,6 +18,7 @@ let questions = ["Who was the first American woman in space? ",
                   "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ",
                   "What is the minimum crew size for the ISS? "
                 ];
+let numQuestions = questions.length;
 
 let correctAnswers = ["Sally Ride" ,	"true" ,	"40" , "Trajectory" ,"3"];
 let candidateAnswers = [];
@@ -46,10 +47,10 @@ function gradeQuiz(candidateAnswers) {
       corrects += 1;
     }
   }
-  
+
   //TODO 3.2 use this variable to calculate the candidates score.
-  let grade = (corrects/5)*100; 
-  console.log(`>>> Overall Grade: ${grade}% (${corrects} of 5 responses correct) <<<`);
+  let grade = (corrects/numQuestions)*100; 
+  console.log(`>>> Overall Grade: ${grade}% (${corrects} of ${numQuestions} responses correct) <<<`);
   
   if (grade<80 ){
     console.log(">>> Status: FAILED <<< ");
